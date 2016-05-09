@@ -3,6 +3,19 @@
 <head>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tag %>
+  <%= stylesheet_link_tag 'application' %>
+  <!-- Include Required Prerequisites -->
+
+  <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/latest/css/bootstrap.css" />
+
+  <!-- Include Date Range Picker -->
+  <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
 </head>
 <body>
   <div id="header">
@@ -11,6 +24,9 @@
     <% else -%>
       <%= link_to t(".sign_in"), sign_in_path %>
     <% end -%>
+      <%= link_to t(".add_listing"), new_listing_path %>
+      <%= link_to t(".profile"), profile_show_path %>
+      <%= link_to t(".listings"), posts_path %>
   </div>
 
   <div id="flash">

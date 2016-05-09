@@ -46,7 +46,7 @@ class Clearance::UsersController < ApplicationController
   end
 
   def user_from_params
-    byebug
+
     email = user_params.delete(:email)
     password = user_params.delete(:password)
     first_name = user_params.delete(:first_name)

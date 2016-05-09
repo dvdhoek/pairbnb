@@ -1,6 +1,22 @@
 Rails.application.routes.draw do
+
+  get 'profile/show'
+  get 'sessions/create'
+  get 'sessions/destroy'
+  get 'home/show'
   get 'sessions/new'
-  root 'sessions#new'
+  root 'posts#index'
+  get 'posts/posts' => 'posts#index'
+  resources :listings do
+    resources :reservations
+  end
+  resources :posts
+  # resources :reservations
+  resources :profile
+
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth", as: "callback"
+
+  resources :users, only: [:show, :update]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

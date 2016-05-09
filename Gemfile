@@ -25,6 +25,19 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+# Date picker
+gem 'momentjs-rails'
+gem 'bootstrap-daterangepicker-rails'
+
+# Figaro
+gem 'figaro'
+
+# Paperclib
+gem "paperclip", "~> 5.0.0.beta1"
+
+# OmniAuth for facebook login
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
