@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 	protect_from_forgery :except => [:update]
 
 	def show
-
 		@user = User.find(params[:userid])
 	end
 

@@ -1,18 +1,64 @@
-<% provide(:title, "Edit user") %>
-<h1>Update your listing</h1>
-
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@listing) do |f| %>
 
 
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+			<div class="profileinfo">
+				<h2>Update your Profile Info &rarr;</h2>
+				
+				<div class="gear">
+					<label>Title:</label>
+					<span id="pemail" method="title" listing="<%= @listing.id %>" class="datainfo"><%= @listing.name %></span>
+					<a href="#" class="editlink" name="listing">Edit Info</a>
+					<a class="savebtn" name="listing">Save</a>
+				</div>
+				
+				<div class="gear">
+					<label>Description:</label>
+					<span id="firstname" method="description" user="<%= @listing.id %>" class="datainfo"><%= @listing.description %></span>
+					<a href="#" class="editlink" name="listing">Edit Info</a>
+					<a class="savebtn" name="listing">Save</a>
+				</div>
+				
+				<div class="gear">
+					<label>Country:</label>
+					<span id="lastname" method="country" user="<%= @listing.id %>" class="datainfo"><%= @listing.country %></span>
+					<a href="#" class="editlink" name="listing">Edit Info</a>
+					<a class="savebtn" name="listing">Save</a>
+				</div>
+				
+				<div class="gear">
+					<label>Address:</label>
+					<span id="dateofbirth" method="address" user="<%= @listing.id %>" class="datainfo"><%= @listing.address %></span>
+					<a href="#" class="editlink" name="listing">Edit Info</a>
+					<a class="savebtn" name="listing">Save</a>
+				</div>
 
-      <%= f.label :description %>
-      <%= f.text_field :description %>
+				<div class="gear">
+					<label>Room type:</label>
+					<span id="dateofbirth" method="room_type" user="<%= @listing.id %>" class="datainfo"><%= @listing.room_type %></span>
+					<a href="#" class="editlink" name="listing">Edit Info</a>
+					<a class="savebtn" name="listing">Save</a>
+				</div>
 
-      <%= f.submit "Save changes" %>
-    <% end %>
-  </div>
-</div>
+				<div class="gear">
+					<label>Accomodates:</label>
+					<span id="dateofbirth" method="accomodates" user="<%= @listing.id %>" class="datainfo"><%= @listing.accomodates %></span>
+					<a href="#" class="editlink" name="listing">Edit Info</a>
+					<a class="savebtn" name="listing">Save</a>
+				</div>
+
+				<div class="gear">
+					<label>Number of beds:</label>
+					<span id="dateofbirth" method="beds" user="<%= @listing.id %>" class="datainfo"><%= @listing.number_of_beds %></span>
+					<a href="#" class="editlink" name="listing">Edit Info</a>
+					<a class="savebtn" name="listing">Save</a>
+				</div>
+
+				<div class="gear">
+					<label>Number of bathrooms:</label>
+					<span id="dateofbirth" method="bathrooms" user="<%= @listing.id %>" class="datainfo"><%= @listing.number_of_bathrooms %></span>
+					<a href="#" class="editlink" name="listing">Edit Info</a>
+					<a class="savebtn" name="listing">Save</a>
+				</div>
+
+			</div>
+	</div>
+</body>

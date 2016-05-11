@@ -1,3 +1,4 @@
+<%= javascript_include_tag "profile" %>
 
 	
 
@@ -7,36 +8,36 @@
 				<div class="gear">
 					<label>Primary E-Mail:</label>
 					<span id="pemail" method="email" user="<%= current_user.id %>" class="datainfo"><%= current_user.email %></span>
-					<a href="#" class="editlink" >Edit Info</a>
-					<a class="savebtn">Save</a>
+					<a href="#" class="editlink" name="profile">Edit Info</a>
+					<a class="savebtn" name="profile">Save</a>
 				</div>
 				
 				<div class="gear">
 					<label>First name:</label>
 					<span id="firstname" method="first_name" user="<%= current_user.id %>" class="datainfo"><%= current_user.first_name %></span>
-					<a href="#" class="editlink">Edit Info</a>
-					<a class="savebtn">Save</a>
+					<a href="#" class="editlink" name="profile">Edit Info</a>
+					<a class="savebtn" name="profile">Save</a>
 				</div>
 				
 				<div class="gear">
 					<label>Last name:</label>
 					<span id="lastname" method="last_name" user="<%= current_user.id %>" class="datainfo"><%= current_user.last_name %></span>
-					<a href="#" class="editlink">Edit Info</a>
-					<a class="savebtn">Save</a>
+					<a href="#" class="editlink" name="profile">Edit Info</a>
+					<a class="savebtn" name="profile">Save</a>
 				</div>
 				
 				<div class="gear">
 					<label>Date of Birth:</label>
 					<span id="dateofbirth" method="date_of_birth" user="<%= current_user.id %>" class="datainfo"><%= current_user.date_of_birth %></span>
-					<a href="#" class="editlink">Edit Info</a>
-					<a class="savebtn">Save</a>
+					<a href="#" class="editlink" name="profile">Edit Info</a>
+					<a class="savebtn" name="profile">Save</a>
 				</div>
 				
 				<div class="gear">
 					<label>Subscribe to newsletter:</label>
 					<span id="occupation" class="datainfo"><%= 'Create a checkbox somehow' %> </span>
-					<a href="#" class="editlink">Edit Info</a>
-					<a class="savebtn">Save</a>
+					<a href="#" class="editlink" name="profile">Edit Info</a>
+					<a class="savebtn" name="profile">Save</a>
 				</div>
 			</div>
 	</div>

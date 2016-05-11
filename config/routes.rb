@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
   root 'posts#index'
   get 'posts/posts' => 'posts#index'
+
   resources :listings do
     resources :reservations
   end

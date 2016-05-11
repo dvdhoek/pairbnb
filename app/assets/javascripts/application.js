@@ -17,8 +17,11 @@
 
 // = require moment
 // = require daterangepicker
+
+// this is the javascript for the listing editing
+
 $(document).ready(function(){
-  $(".editlink").on("click", function(e){
+  $('a[name="profile"]').on("click", function(e){
     e.preventDefault();
     var dataset = $(this).prev(".datainfo");
     var savebtn = $(this).next(".savebtn");
@@ -34,7 +37,7 @@ $(document).ready(function(){
   });
 
     
-  $(".savebtn").on("click", function(e){
+  $('a[name="profile"]').on("click", function(e){
     e.preventDefault();
 
 
@@ -45,11 +48,11 @@ $(document).ready(function(){
     var cinput  = "#"+newid+"-form";
     var einput  = $(cinput);
     var newval  = einput.attr("value");
-    var userid  = dataset.attr("user");
+    var listingid  = dataset.attr("user");
     var method  = dataset.attr("method");
     var data = {
         newval: newval,
-        userid: userid,
+        userid: user,
         method: method
       };
 
@@ -59,8 +62,62 @@ $(document).ready(function(){
     
     elink.css("display", "block");
       $.ajax({
-     
-        url: '/users'+'/6',
+
+        url: '/users'+'/*',
+        type: 'put',
+        data: data,
+ // csrf token included? 
+     });
+  });
+});
+
+// This is the javascript used for the profile editing //
+
+$(document).ready(function(){
+  $('a[name="listing"]').on("click", function(e){
+    e.preventDefault();
+    var dataset = $(this).prev(".datainfo");
+    var savebtn = $(this).next(".savebtn");
+    var theid   = dataset.attr("id");
+    var newid   = theid+"-form";
+    var currval = dataset.text();
+    
+    dataset.empty();
+    
+    $('<input type="text" name="'+newid+'" id="'+newid+'" value="'+currval+'" class="hlite">').appendTo(dataset);
+    $(this).css("display", "none");
+    savebtn.css("display", "block");
+  });
+
+    
+  $('a[name="listing"]').on("click", function(e){
+    e.preventDefault();
+
+
+    var elink   = $(this).prev(".editlink");
+    var dataset = elink.prev(".datainfo");
+    var newid   = dataset.attr("id");
+
+    var cinput  = "#"+newid+"-form";
+    var einput  = $(cinput);
+    var newval  = einput.attr("value");
+    var listingid  = dataset.attr("user");
+    var method  = dataset.attr("method");
+    var data = {
+        newval: newval,
+        listingid: listingid,
+        method: method
+      };
+    var url = "/listings/"+":id" // this is weird, check it 
+
+    $(this).css("display", "none");
+    einput.remove();
+    dataset.html(newval);
+    
+    elink.css("display", "block");
+      $.ajax({
+
+        url: url,
         type: 'put',
         data: data,
  // csrf token included? 
@@ -69,6 +126,7 @@ $(document).ready(function(){
 });
 
 
+// this is the javascript for the datepicker 
 $('#demo').daterangepicker({
     "startDate": "04/29/2016",
     "endDate": "05/05/2016",
@@ -77,8 +135,6 @@ $('#demo').daterangepicker({
 }, function(start, end, label) {
   console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
 });
-
-
 
 $(function() {
 
@@ -100,6 +156,6 @@ $(function() {
 
 });
 
-
+//
 
  

@@ -32,8 +32,9 @@ gem 'bootstrap-daterangepicker-rails'
 # Figaro
 gem 'figaro'
 
-# Paperclib
-gem "paperclip", "~> 5.0.0.beta1"
+# Carrierwave for image uploads
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
 
 # OmniAuth for facebook login
 gem 'omniauth'
