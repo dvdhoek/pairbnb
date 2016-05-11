@@ -37,32 +37,26 @@
 </div>
 </center>
 
+<center>
+<div id="feature_list">
 <h2> <%= @listing.name %> </h2>
-<h3> <%= @listing.description %> </h3>
+<p> Description: <%= @listing.description %> </p>
+<p> Country: <%= @listing.country %> </p>
+<p> Address: <%= @listing.address %> </p>
+<p> Room type: <%= @listing.room_type %> </p>
+<p> Accomodates: <%= @listing.accomodates %> </p>
+<p> Beds: <%= @listing.number_of_beds %> </p>
+<p> Bathrooms: <%= @listing.number_of_bathrooms %> </p>
 
-<p> Features </p>
-<p> <%= @listing.country %> </p>
-<p> <%= @listing.address %> </p>
-<p> <%= @listing.room_type %> </p>
-<p> <%= @listing.accomodates %> </p>
-<p> <%= @listing.number_of_beds %> </p>
-<p> <%= @listing.number_of_bathrooms %> </p>
 
-<center style="width: 60%">
-<%= form_for [@listing, @reservation] do |form| %>
-
-<div class='input-group date' id='datetimepicker5'>
-   <input ng-model="utente.dt_nascita" type='text' class="col-sm-3 form-control" data-date-format="YYYY/MM/DD"/>
-   <span class="input-group-addon">
-       <span class="glyphicon glyphicon-calendar"></span>
-   </span>
+<%= simple_form_for [@listing, @reservation] do |f| %>
+  <%= f.date_field :start_date %>
+  <%= f.date_field :end_date %>
+  <div class="submit-field">
+    <%= f.submit %>
+  </div>
+<% end %>
 </div>
-
-<div class="submit-field">
-      <%= form.submit %>
-</div>
-
- <% end %>
 </center>
 
 

@@ -1,5 +1,7 @@
-@import "bootstrap-sprockets";
+
 @import "bootstrap";
+@import "bootstrap-sprockets";
+@import 'bootstrap-datetimepicker';
 
  * { margin: 0; padding: 0; outline: none; }
 html { height: 101%; }
@@ -57,4 +59,7 @@ label { display: inline-block; font-weight: bold; color: #696969; font-size: 12p
 	margin-bottom: -100px;
 }
 
-
+#feature_list {
+	width: 60%;
+	text-align: left;
+}

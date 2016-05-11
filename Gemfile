@@ -25,9 +25,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-# Date picker
-gem 'momentjs-rails'
-gem 'bootstrap-daterangepicker-rails'
 
 # Bootstrap 
 gem 'bootstrap-sass', '~> 3.2.0'
@@ -35,6 +32,11 @@ gem 'autoprefixer-rails'
 
 # Figaro
 gem 'figaro'
+
+# Datepicker
+gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
+gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
+gem 'simple_form'
 
 # Carrierwave for image uploads
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'

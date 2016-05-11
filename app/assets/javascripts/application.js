@@ -13,18 +13,19 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-// = require moment
-// = require daterangepicker
-//= require_tree .
+//= require moment
+//= require_tree 
+
 
 $(document).ready(function(){
-  $('a[name="profile"]').on("click", function(e){
+  $('a[name="profile_edit"]').on("click", function(e){
     e.preventDefault();
     var dataset = $(this).prev(".datainfo");
     var savebtn = $(this).next(".savebtn");
     var theid   = dataset.attr("id");
     var newid   = theid+"-form";
     var currval = dataset.text();
+    var userid = dataset.attr("user");
     
     dataset.empty();
     
@@ -45,12 +46,11 @@ $(document).ready(function(){
     var cinput  = "#"+newid+"-form";
     var einput  = $(cinput);
     var newval  = einput.attr("value");
-    var listingid  = dataset.attr("user");
+    var userid  = dataset.attr("user");
     var method  = dataset.attr("method");
     var data = {
-        newval: newval,
-        userid: user,
-        method: method
+        method: method,
+        newval: newval
       };
 
     $(this).css("display", "none");
@@ -59,9 +59,8 @@ $(document).ready(function(){
     
     elink.css("display", "block");
       $.ajax({
-
-        url: '/users'+'/*',
-        type: 'put',
+        url: '/users/'+userid,
+        type: 'PUT',
         data: data,
  // csrf token included? 
      });
@@ -71,14 +70,14 @@ $(document).ready(function(){
 // This is the javascript used for the profile editing //
 
 $(document).ready(function(){
-  $('a[name="listing"]').on("click", function(e){
+  $('a[name="listing_edit"]').on("click", function(e){
     e.preventDefault();
     var dataset = $(this).prev(".datainfo");
     var savebtn = $(this).next(".savebtn");
     var theid   = dataset.attr("id");
     var newid   = theid+"-form";
     var currval = dataset.text();
-    
+    var listingid  = dataset.attr("listing");
     dataset.empty();
     
     $('<input type="text" name="'+newid+'" id="'+newid+'" value="'+currval+'" class="hlite">').appendTo(dataset);
@@ -94,18 +93,15 @@ $(document).ready(function(){
     var elink   = $(this).prev(".editlink");
     var dataset = elink.prev(".datainfo");
     var newid   = dataset.attr("id");
-
+    var listingid  = dataset.attr("listing");
     var cinput  = "#"+newid+"-form";
     var einput  = $(cinput);
     var newval  = einput.attr("value");
-    var listingid  = dataset.attr("user");
     var method  = dataset.attr("method");
     var data = {
-        newval: newval,
-        listingid: listingid,
-        method: method
+        method: method,
+        newval: newval
       };
-    var url = "/listings/"+":id" // this is weird, check it 
 
     $(this).css("display", "none");
     einput.remove();
@@ -113,9 +109,8 @@ $(document).ready(function(){
     
     elink.css("display", "block");
       $.ajax({
-
-        url: url,
-        type: 'put',
+        url: '/listings/'+listingid,
+        type: 'PUT',
         data: data,
  // csrf token included? 
      });
@@ -123,15 +118,6 @@ $(document).ready(function(){
 });
 
 
-// this is the javascript for the datepicker 
-$('#datetimepicker5').datetimepicker({
-    format: 'L'
-});
 
-$('#datetimepicker5').datetimepicker({
-    format: 'L',
-    locale: 'fr'
-});
-//
 
  

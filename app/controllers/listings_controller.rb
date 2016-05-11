@@ -21,24 +21,8 @@ class ListingsController < ApplicationController
 	end
 
 	def update
-		@listing = Listing.find(params[:listingid])
-		if params[:method] == "title"
-			@listing.name = params[:newval]
-		elsif params[:method] == "description"
-			@listing.description = params[:newval]
-		elsif params[:method] == "country"
-			@listing.country = params[:newval]
-		elsif params[:method] == "address"
-			@listing.address = params[:newval]
-		elsif params[:method] == "room_type"
-			@listing.room_type = params[:newval]
-		elsif params[:method] == "accomodates"
-			@listing.accomodates = params[:newval]
-		elsif params[:method] == "beds"
-			@listing.number_of_beds = params[:newval]
-		elsif params[:method] == "bathrooms"
-			@listing.number_of_bathrooms = params[:newval]
-		end
+		@listing = Listing.find(params[:id])
+		@listing.update(params[:method] => params[:newval])
 		@listing.save
 	end
 
@@ -46,9 +30,6 @@ class ListingsController < ApplicationController
 		@listing = Listing.find(params[:id])
 		@listing.delete
 		redirect_to root_path
-	end
-
-	def index
 	end
 
 	private
