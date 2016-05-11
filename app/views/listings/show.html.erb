@@ -1,26 +1,68 @@
-<h1>Listing posts</h1>
- 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
- 
-<% @listings.each do |listing| %>
-  <tr>
-    <td><%= listing.name %></td>
-    <td><%= listing.description %></td>
-    <td><%= link_to 'Show', listing_path(listing) %></td>
-    <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-    <td><%= link_to 'Destroy', listing, :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to 'Reserve', new_listing_reservation_path(listing) %></td>  
+<!-- This is the show page for individual listings. It should contain; 
+      - reservation option
+      - show all the info required for the listing
+      - variable needed: @listing and current_user -->
+<center>
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <% @listing.images.each do |image| %>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <% end %>
+  </ol>
 
-    <%= image_tag listing.images[0].url(:thumb).to_s %>       
-    <%= image_tag listing.images[1].url(:thumb).to_s %>                          
-  </tr>
-<% end %>
-</table>
- 
-<br />
- 
-<%= link_to 'New post', new_listing_path %>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+
+    <div class="item active" id="listing_page_image">
+     <%= image_tag @listing.images[0].url.to_s, :width => '100%'%>
+    </div>
+
+    <% @listing.images.each do |image| %>
+    <div class="item" id="listing_page_image">
+     <%= image_tag image.url.to_s, :width => '100%'%>
+    </div>
+    <% end %>
+  </div>
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</center>
+
+<h2> <%= @listing.name %> </h2>
+<h3> <%= @listing.description %> </h3>
+
+<p> Features </p>
+<p> <%= @listing.country %> </p>
+<p> <%= @listing.address %> </p>
+<p> <%= @listing.room_type %> </p>
+<p> <%= @listing.accomodates %> </p>
+<p> <%= @listing.number_of_beds %> </p>
+<p> <%= @listing.number_of_bathrooms %> </p>
+
+<center style="width: 60%">
+<%= form_for [@listing, @reservation] do |form| %>
+
+<div class='input-group date' id='datetimepicker5'>
+   <input ng-model="utente.dt_nascita" type='text' class="col-sm-3 form-control" data-date-format="YYYY/MM/DD"/>
+   <span class="input-group-addon">
+       <span class="glyphicon glyphicon-calendar"></span>
+   </span>
+</div>
+
+<div class="submit-field">
+      <%= form.submit %>
+</div>
+
+ <% end %>
+</center>
+
+

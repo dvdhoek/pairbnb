@@ -13,12 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
-
 // = require moment
 // = require daterangepicker
-
-// this is the javascript for the listing editing
+//= require_tree .
 
 $(document).ready(function(){
   $('a[name="profile"]').on("click", function(e){
@@ -127,35 +124,14 @@ $(document).ready(function(){
 
 
 // this is the javascript for the datepicker 
-$('#demo').daterangepicker({
-    "startDate": "04/29/2016",
-    "endDate": "05/05/2016",
-    constrainInput: true,
-
-}, function(start, end, label) {
-  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+$('#datetimepicker5').datetimepicker({
+    format: 'L'
 });
 
-$(function() {
-
-  $('input[name="datefilter"]').daterangepicker({
-      autoUpdateInput: false,
-      locale: {
-          cancelLabel: 'Clear'
-      }
-  });
-
-  $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
-  });
-
-  $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
-      $(this).val('');
-  });
-
-
+$('#datetimepicker5').datetimepicker({
+    format: 'L',
+    locale: 'fr'
 });
-
 //
 
  

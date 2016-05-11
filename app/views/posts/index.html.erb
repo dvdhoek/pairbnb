@@ -10,7 +10,7 @@
   <tr>
     <td><%= listing.name %></td>
     <td><%= listing.description %></td>
-    <td><%= link_to 'Show', listing_path(listing) %></td>
+    <td><a href="/listings/<%=listing.id%>">Show</a></td>
     <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
     <td><%= link_to 'Destroy', listing, :confirm => 'Are you sure?',
                                       :method => :delete %></td>
@@ -22,3 +22,4 @@
 <br />
  
 <%= link_to 'New post', new_listing_path %>
+

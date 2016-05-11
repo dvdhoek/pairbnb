@@ -7,6 +7,7 @@ class ReservationsController < ApplicationController
 	end
 
 	def create
+		byebug
 		@listing = Listing.find(params[:listing_id])
 		@start_date, @end_date = params[:datefilter].split(' - ')
 		@r = current_user.reservations.new(start_date: @start_date, end_date: @end_date, listing_id: @listing.id)

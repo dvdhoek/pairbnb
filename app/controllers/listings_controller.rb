@@ -12,7 +12,8 @@ class ListingsController < ApplicationController
 	end 
 
 	def show
-		@listings = Listing.all
+		@listing = Listing.find(params[:id])
+		@reservation = @listing.reservations.new
 	end 
 
 	def edit
@@ -21,7 +22,6 @@ class ListingsController < ApplicationController
 
 	def update
 		@listing = Listing.find(params[:listingid])
-		byebug
 		if params[:method] == "title"
 			@listing.name = params[:newval]
 		elsif params[:method] == "description"
