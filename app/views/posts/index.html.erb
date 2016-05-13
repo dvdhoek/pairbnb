@@ -1,25 +1,58 @@
-<h1>Listing posts</h1>
- 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-  </tr>
- 
-<% @listings.each do |listing| %>
-  <tr>
-    <td><%= listing.name %></td>
-    <td><%= listing.description %></td>
-    <td><a href="/listings/<%=listing.id%>">Show</a></td>
-    <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-    <td><%= link_to 'Destroy', listing, :confirm => 'Are you sure?',
-                                      :method => :delete %></td>
-    <td><%= link_to 'Reserve', new_listing_reservation_path(listing) %></td> 
-  </tr>
-<% end %>
-</table>
- 
-<br />
- 
-<%= link_to 'New post', new_listing_path %>
+<center> 
+  <div id="container"> 
+    <% @listings.in_groups_of(2) do |group| %>
+    <% group.each do |listing| %> 
+    <center>
+      <div class="container" style="width: 50%">
+        <h2><%= listing.name %></h2>
+        <div id="myCarousel<%= listing.id %>" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel<%= listing.id %>" data-slide-to="0" class="active"></li>
+            <% listing.images.each do |image| %>
+            <li data-target="#myCarousel<%= listing.id %>" data-slide-to="1"></li>
+            <% end %>
+          </ol>
 
+          
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+
+            <div class="item active">
+             <%= image_tag listing.images[0].url.to_s, :width => '100%'%>
+           </div>
+
+           <% listing.images.each do |image| %>
+           <div class="item">
+             <%= image_tag image.url.to_s, :width => '100%'%>
+           </div>
+           <% end %>
+         </div>
+
+         <!-- Left and right controls -->
+         <a class="left carousel-control" href="#myCarousel<%= listing.id %>" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel<%= listing.id %>" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      
+      <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#<%= listing.id %>">Show more</button>
+      <div id="<%= listing.id %>" class="collapse out">
+        <%= listing.description %>
+        <% if listing.user_id == current_user.id %>
+        <%= link_to 'Edit', edit_listing_path(listing) %>
+        <%= link_to 'Destroy', listing, :confirm => 'Are you sure?',:method => :delete %>
+        <% elsif listing.user_id != current_user.id %>
+        <%= link_to 'Reserve', new_listing_reservation_path(listing) %>
+        <% end %>
+        <a href="/listings/<%=listing.id%>">Show</a>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+</center>

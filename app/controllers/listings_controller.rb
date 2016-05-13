@@ -7,7 +7,6 @@ class ListingsController < ApplicationController
 	def create
 		@listing = current_user.listings.new(listing_params)	 #it doesn't store the user id somehow??
 		@listing.save
-		byebug
 		redirect_to root_path
 	end 
 

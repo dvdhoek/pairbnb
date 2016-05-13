@@ -15,6 +15,13 @@ GIT
       railties (>= 3.1)
 
 GIT
+  remote: git://github.com/ncuesta/dropzonejs-rails.git
+  revision: 54931ae6176daae9d90f932e0cb9ff8d14faa62b
+  specs:
+    dropzonejs-rails (0.7.3)
+      rails (> 3.1)
+
+GIT
   remote: git://github.com/zpaulovics/datetimepicker-rails.git
   revision: 36d21cec5da7f5b214925804f60e63c61c747023
   branch: master
@@ -211,6 +218,7 @@ DEPENDENCIES
   clearance
   coffee-rails (~> 4.1.0)
   datetimepicker-rails!
+  dropzonejs-rails!
   figaro
   jbuilder (~> 2.0)
   jquery-rails (< 3.0)

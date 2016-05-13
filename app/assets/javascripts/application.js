@@ -15,9 +15,9 @@
 //= require turbolinks
 //= require moment
 //= require_tree 
-
-
-$(document).ready(function(){
+//= require dropzone
+// document on page laod add
+$(window).load(function(){
   $('a[name="profile_edit"]').on("click", function(e){
     e.preventDefault();
     var dataset = $(this).prev(".datainfo");
@@ -32,9 +32,9 @@ $(document).ready(function(){
     $('<input type="text" name="'+newid+'" id="'+newid+'" value="'+currval+'" class="hlite">').appendTo(dataset);
     $(this).css("display", "none");
     savebtn.css("display", "block");
-  });
+});
 
-    
+  
   $('a[name="profile"]').on("click", function(e){
     e.preventDefault();
 
@@ -51,20 +51,20 @@ $(document).ready(function(){
     var data = {
         method: method,
         newval: newval
-      };
+    };
 
     $(this).css("display", "none");
     einput.remove();
     dataset.html(newval);
     
     elink.css("display", "block");
-      $.ajax({
+    $.ajax({
         url: '/users/'+userid,
         type: 'PUT',
         data: data,
  // csrf token included? 
-     });
-  });
+});
+});
 });
 
 // This is the javascript used for the profile editing //
@@ -83,9 +83,9 @@ $(document).ready(function(){
     $('<input type="text" name="'+newid+'" id="'+newid+'" value="'+currval+'" class="hlite">').appendTo(dataset);
     $(this).css("display", "none");
     savebtn.css("display", "block");
-  });
+});
 
-    
+  
   $('a[name="listing"]').on("click", function(e){
     e.preventDefault();
 
@@ -101,23 +101,48 @@ $(document).ready(function(){
     var data = {
         method: method,
         newval: newval
-      };
+    };
 
     $(this).css("display", "none");
     einput.remove();
     dataset.html(newval);
     
     elink.css("display", "block");
-      $.ajax({
+    $.ajax({
         url: '/listings/'+listingid,
         type: 'PUT',
         data: data,
  // csrf token included? 
-     });
-  });
+});
+});
 });
 
+$(document).ready(function(){
+    $("#subscribeswitch").on("click", function () {
+        var value = $(this).val();
+        debugger
+        var data = {
+            newval: value,
+            method: "subscribe"
+        }
+        $.ajax({
+            type: "PUT",
+            url: "/users/2",
+            data: data,
+            success: function (msg) {
+                alert('Success');
+                if (msg != 'success') {
+                    alert('Fail');
+                }
+            }
+        });
+        
+    });
+})
 
-
-
- 
+$(document).ready(function(){
+$("#switch-wrapper").switchButton({
+  on_label: 'yes',
+  off_label: 'no'
+});
+})

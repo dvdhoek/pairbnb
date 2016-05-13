@@ -22,5 +22,4 @@ class User < ActiveRecord::Base
   def password_optional?
     true
   end  
-
 end

@@ -33,6 +33,9 @@ gem 'autoprefixer-rails'
 # Figaro
 gem 'figaro'
 
+# Dropzone for drag'n'drop uploads
+gem 'dropzonejs-rails', github: 'ncuesta/dropzonejs-rails'
+
 # Datepicker
 gem 'momentjs-rails', '~> 2.9',  :github => 'derekprior/momentjs-rails'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
