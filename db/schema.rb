@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20160505034817) do
   end
 
   create_table "listings", force: :cascade do |t|
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "user_id"
     t.string   "name"
     t.string   "description"
@@ -37,29 +37,32 @@ ActiveRecord::Schema.define(version: 20160505034817) do
     t.string   "accomodates"
     t.integer  "number_of_beds"
     t.integer  "number_of_bathrooms"
+    t.integer  "price",               default: 0
     t.json     "images"
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "start_date"
     t.string   "end_date"
     t.integer  "listing_id"
     t.integer  "user_id"
+    t.integer  "price",      default: 0
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "email",                          null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.string   "email",                                      null: false
     t.string   "first_name"
     t.string   "last_name"
     t.date     "date_of_birth"
     t.integer  "subscribe"
-    t.string   "encrypted_password", limit: 128, null: false
+    t.integer  "amount_due",                     default: 0
+    t.string   "encrypted_password", limit: 128,             null: false
     t.string   "confirmation_token", limit: 128
-    t.string   "remember_token",     limit: 128, null: false
+    t.string   "remember_token",     limit: 128,             null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

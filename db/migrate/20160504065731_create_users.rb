@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :last_name
       t.date   :date_of_birth
       t.integer :subscribe
+      t.integer :amount_due, default: 0
       
       t.string :encrypted_password, limit: 128, null: false
       t.string :confirmation_token, limit: 128

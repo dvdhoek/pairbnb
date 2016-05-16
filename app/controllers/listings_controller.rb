@@ -5,7 +5,7 @@ class ListingsController < ApplicationController
 	end 
 
 	def create
-		@listing = current_user.listings.new(listing_params)	 #it doesn't store the user id somehow??
+		@listing = current_user.listings.new(listing_params)	 
 		@listing.save
 		redirect_to root_path
 	end 
@@ -33,7 +33,7 @@ class ListingsController < ApplicationController
 
 	private
 	def listing_params
-		params.require(:listing).permit(:name, :description, :country, :address, :room_type, :accomodates, :number_of_beds, :number_of_bathrooms, {images: []})
+		params.require(:listing).permit(:name, :description, :country, :address, :room_type, :accomodates, :number_of_beds, :number_of_bathrooms, :price, {images: []})
 	end 
 
 end

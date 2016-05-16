@@ -44,8 +44,10 @@
 			</select>
 		</div>
 
-		<div id="switch-wrapper">
-		  <input type="checkbox" value="1" checked>
+		<div class="gear">
+			<label>Amount Due:</label>
+			<span id="dateofbirth" method="date_of_birth" user="<%= current_user.id %>" class="datainfo">$<%= current_user.amount_due%></span>
+			<p class="editlink"> <%= link_to 'Pay outstanding amount', new_payment_path %> </p>
 		</div>
 
 		<h3> My reservations </h3>
@@ -74,6 +76,8 @@
 		<% end %> 
 		<% end %>
 	</div>
+
+	<p> <%= link_to 'Pay outstanding amount', new_payment_path %> </p>
 </center>
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>	

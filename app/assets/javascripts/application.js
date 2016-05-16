@@ -15,7 +15,8 @@
 //= require turbolinks
 //= require moment
 //= require_tree 
-//= require dropzone
+
+
 // document on page laod add
 $(window).load(function(){
   $('a[name="profile_edit"]').on("click", function(e){

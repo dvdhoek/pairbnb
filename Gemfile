@@ -14,8 +14,17 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# Letter opener for simulating emails, Launchy for opening temp email files realtime
+# gem 'letter_opener'
+# gem 'launchy'
+
+# sinatra for dashboard
+gem 'sinatra', '>= 1.3.0', :require => nil
+# Sidekiq for the background processes
+gem 'sidekiq'
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '< 3.0'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -29,6 +38,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Bootstrap 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+
+# Braintree for payments
+gem "braintree"
+
+# Gon to acces variables from the controller in the JS
+gem 'gon', '~> 5.1.2'
 
 # Figaro
 gem 'figaro'

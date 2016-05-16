@@ -1,7 +1,111 @@
+
+  <div id="container"> 
+      <div style="width: 170%">
+        <div id="myCarousel<%= @header.id %>" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel<%= @header.id %>" data-slide-to="0" class="active"></li>
+            <% @header.images.each do |image| %>
+            <li data-target="#myCarousel<%= @header.id %>" data-slide-to="1"></li>
+            <% end %>
+          </ol>
+
+          
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" role="listbox">
+
+          <div class="item active" id="listing_page_image">
+            <%= image_tag @header.images[0].url.to_s, :width => '150%'%>
+          </div>
+
+           <% @header.images.each do |image| %>
+           <div class="item" id="listing_page_image">
+             <%= image_tag image.url.to_s, :width => '150%'%>
+           </div>
+           <% end %>
+         </div>
+
+         <!-- Left and right controls -->
+         <a class="left carousel-control" href="#myCarousel<%= @header.id %>" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel<%= @header.id %>" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+<div class="search">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="form-section">
+            <div class="row">
+              <form role="form">
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label class="sr-only" for="location">Location</label>
+                    <input type="email" class="form-control" id="location" placeholder="Where ?">
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label class="sr-only" for="checkin">Check-In</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="checkin" placeholder="Check in">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label class="sr-only" for="checkout">Check-Out</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="checkout" placeholder="Check out">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div class="form-group">
+                    <label class="sr-only" for="guest">Guest</label>
+                    <select id="guest" name="guest" class="form-control">
+                        <option value="1">1 Guest</option>
+                        <option value="2">2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4 Guests</option>
+                        <option value="5">5 Guests</option>
+                        <option value="6">6 Guests</option>
+                        <option value="7">7 Guests</option>
+                        <option value="8">8 Guests</option>
+                        <option value="9">9 Guests</option>
+                        <option value="10">10 Guests</option>
+                        <option value="11">11 Guests</option>
+                        <option value="12">12 Guests</option>
+                        <option value="13">13 Guests</option>
+                        <option value="14">14 Guests</option>
+                        <option value="15">15 Guests</option>
+                        <option value="16">16+ Guests</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                <button type="submit" class="btn btn-default btn-primary">Book Now</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <center> 
   <div id="container"> 
-    <% @listings.in_groups_of(2) do |group| %>
-    <% group.each do |listing| %> 
+    <% @listings.each do |listing| %> 
     <center>
       <div class="container" style="width: 50%">
         <h2><%= listing.name %></h2>
@@ -52,7 +156,6 @@
         <a href="/listings/<%=listing.id%>">Show</a>
       </div>
     </div>
-    <% end %>
     <% end %>
   </div>
 </center>

@@ -12,7 +12,9 @@ class CreateListings < ActiveRecord::Migration
       t.string :accomodates
       t.integer :number_of_beds
       t.integer :number_of_bathrooms
+      t.integer :price, default: 0
       t.json :images
+
       
     end
   end

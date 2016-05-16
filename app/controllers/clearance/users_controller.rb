@@ -19,7 +19,9 @@ class Clearance::UsersController < ApplicationController
 
     if @user.save
       sign_in @user
+      PostmanWorker.perform_async(current_user.email)
       redirect_back_or url_after_create
+
     else
       render template: "users/new"
     end

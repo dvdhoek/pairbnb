@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'transactions/new'
+
   get 'profile/show'
   get 'sessions/create'
   get 'sessions/destroy'
@@ -21,11 +23,12 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :update]
 
   resources :listings
-  
+  # get "/payment/:user_id" => "payments#new", as: "payment_new"
 
+  resources :payments, only: [:new, :create]
 
-
-
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
